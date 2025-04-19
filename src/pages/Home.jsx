@@ -29,8 +29,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-
-      <main className="pt-24 pb-24 px-6 flex flex-col md:flex-row items-center justify-center gap-16 max-w-screen-xl mx-auto">
+      <main className="pt-32 pb-20  px-6 flex flex-col md:flex-row items-center justify-center gap-16 max-w-screen-xl mx-auto">
         <div className="flex-1 max-w-lg">
           <h1 className="text-6xl font-bold mb-8 text-center md:text-left leading-tight">
             Smart Stock Recommendations
@@ -66,8 +65,6 @@ const Home = () => {
       <section ref={keyFeaturesRef} className="pt-24 pb-32 px-12 bg-gray-50">
         <KeyFeatures />
       </section>
-
-      {/* Footer */}
       <Footer />
     </div>
   );

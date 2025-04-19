@@ -20,23 +20,17 @@ const Signup = () => {
           <input type="password" placeholder="Password" className="w-full p-3 mb-4 border rounded" />
           <input type="password" placeholder="Confirm Password" className="w-full p-3 mb-6 border rounded" />
 
-          <div className="flex gap-4">
+          <div className="flex justify-center">
             <button 
-              className="flex-1 px-4 py-3 bg-black text-white rounded"
+              className="w-full px-4 py-3 bg-black text-white rounded"
               onClick={() => navigate('/')}
             >
-              Get Started
-            </button>
-            <button 
-              className="flex-1 px-4 py-3 border border-black rounded"
-              onClick={() => navigate('/signup')}
-            >
-              Sign Up
+              Create Account
             </button>
           </div>
 
           <p className="text-center text-gray-600 mt-6">
-            Already have an account? <a href="#" className="text-black font-medium">Login</a>
+            Already have an account? <a href="#" className="text-black font-medium"  onClick={() => navigate('/Login')}>Login</a>
           </p>
         </div>
       </div>
