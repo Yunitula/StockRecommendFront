@@ -13,7 +13,7 @@ const Signup = () => {
       <div className="flex justify-center items-center h-screen bg-white">
         <div className="max-w-md w-full p-8 border rounded-lg shadow">
           <h2 className="text-3xl font-bold mb-4">Sign Up</h2>
-          <p className="text-gray-600 mb-6">Create an account to get started with StockSense</p>
+          <p className="text-gray-600 mb-6">Create an account to get started with NepseDai</p>
 
           <input type="text" placeholder="Full Name" className="w-full p-3 mb-4 border rounded" />
           <input type="email" placeholder="Email" className="w-full p-3 mb-4 border rounded" />

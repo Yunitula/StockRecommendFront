@@ -1,5 +1,5 @@
-StockSense Frontend
-This is the frontend for StockSense, a Stock Recommendation System designed to help users track their portfolio, receive smart stock recommendations, and analyze the growth of their investments. The application is user-friendly and allows individuals to log in, view their portfolio, and get insights into their investments.
+NepseDai Frontend
+This is the frontend for NepseDai, a Stock Recommendation System designed to help users track their portfolio, receive smart stock recommendations, and analyze the growth of their investments. The application is user-friendly and allows individuals to log in, view their portfolio, and get insights into their investments.
 
 Features
 User Login: Secure user authentication allowing users to log in and access their personalized dashboard.

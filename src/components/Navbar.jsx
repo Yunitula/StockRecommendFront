@@ -20,8 +20,8 @@ const Navbar = () => {
                 className="text-2xl font-bold flex items-center gap-3 cursor-pointer"
                 onClick={handleLogoClick}
             >
-                <img src={logo} alt="StockSense Logo" className="w-10 h-10 rounded-full object-cover" />
-                StockSense
+                <img src={logo} alt="NepseDai Logo" className="w-10 h-10 rounded-full object-cover" />
+                NepseDai
             </div>
             <div className="flex gap-4 items-center">
                 <button className="px-4 py-2 border rounded"  onClick={() => navigate('/Login')}>Log in</button>
