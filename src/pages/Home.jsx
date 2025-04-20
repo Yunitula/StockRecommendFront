@@ -18,6 +18,10 @@ const Home = () => {
     navigate('/signup');
   };
 
+  const handleDemoClick = () => {
+    navigate('/dashboard');
+  };
+
   const marketData = [
     { symbol: 'AAPL', name: 'Apple Inc.', price: 182.63, change: '+2.4%' },
     { symbol: 'MSFT', name: 'Microsoft Corp.', price: 415.32, change: '+1.8%' },
@@ -38,8 +42,9 @@ const Home = () => {
             Track your investments and get personalized stock recommendations based on your portfolio and market trends.
           </p>
           <div className="flex gap-6 justify-center md:justify-start">
-            <Button text="Get Started" onClick={handleGetStartedClick} />
+            <Button text="Get Started" variant="outline" onClick={handleGetStartedClick} />
             <Button text="View Features" variant="outline" onClick={handleViewFeaturesClick} />
+            <Button text =" View Demo"  onClick={handleDemoClick} />
           </div>
         </div>
 

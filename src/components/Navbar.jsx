@@ -24,7 +24,7 @@ const Navbar = () => {
                 NepseDai
             </div>
             <div className="flex gap-4 items-center">
-                <button className="px-4 py-2 border rounded"  onClick={() => navigate('/Login')}>Log in</button>
+                <button className="px-4 py-2 border rounded"  onClick={() => navigate('/login')}>Log in</button>
                 <button
                     className="px-4 py-2 bg-black text-white rounded"
                     onClick={() => navigate('/signup')}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const features = [
   {
@@ -16,11 +17,14 @@ const features = [
 ];
 
 const KeyFeatures = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="text-center py-16">
       <h2 className="text-4xl font-bold mb-4">Key Features</h2>
       <p className="text-gray-600 mb-12">Everything you need to make informed investment decisions</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
         {features.map((feature, index) => (
           <div key={index} className="p-6 bg-white rounded shadow">
             <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
