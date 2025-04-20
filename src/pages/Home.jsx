@@ -44,7 +44,7 @@ const Home = () => {
           <div className="flex gap-6 justify-center md:justify-start">
             <Button text="Get Started" variant="outline" onClick={handleGetStartedClick} />
             <Button text="View Features" variant="outline" onClick={handleViewFeaturesClick} />
-            <Button text =" View Demo"  onClick={handleDemoClick} />
+            <Button text =" View Demo >"  onClick={handleDemoClick} />
           </div>
         </div>
 
