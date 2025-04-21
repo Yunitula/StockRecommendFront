@@ -16,7 +16,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}  
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -32,7 +32,8 @@ jobs:
       run: |
         git config --global user.name "Yunitula"
         git config --global user.email "yunishjt@gmail.com"
-        git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf "https://github.com"  # Force Git to use token for authentication
+        # Configure Git to use the token for HTTPS GitHub authentication
+        git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf "https://github.com"
 
     - name: Build the app
       run: npm run build
@@ -41,4 +42,4 @@ jobs:
       run: |
         npm run deploy
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Pass the token to the deployment step
