@@ -13,7 +13,7 @@ const Login = () => {
       <div className="flex justify-center items-center h-screen bg-white">
         <div className="max-w-md w-full p-8 border rounded-lg shadow">
           <h2 className="text-3xl font-bold mb-4">Login</h2>
-          <p className="text-gray-600 mb-6">Enter your email and password to access your account</p>
+          <p className="text-gray-600 mb-6">Enter your email and password to access your account!</p>
 
           <input type="email" placeholder="Email" className="w-full p-3 mb-4 border rounded" />
           <input type="password" placeholder="Password" className="w-full p-3 mb-4 border rounded" />
