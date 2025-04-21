@@ -4,16 +4,16 @@ import { useNavigate } from 'react-router-dom';
 const features = [
   {
     title: 'Portfolio Tracking',
-    description: 'Track your investments in real-time with detailed performance metrics and visualizations.'
+    description: 'Track your investments in real-time with detailed performance metrics and visualizations.',
   },
   {
     title: 'Smart Recommendations',
-    description: 'Get personalized stock recommendations based on your investment style and market conditions.'
+    description: 'Get personalized stock recommendations based on your investment style and market conditions.',
   },
   {
     title: 'Growth Analysis',
-    description: 'Visualize stock performance with interactive charts and detailed growth analysis.'
-  }
+    description: 'Visualize stock performance with interactive charts and detailed growth analysis.',
+  },
 ];
 
 const KeyFeatures = () => {

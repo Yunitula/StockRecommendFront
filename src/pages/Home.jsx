@@ -33,22 +33,26 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <main className="pt-32 pb-20  px-6 flex flex-col md:flex-row items-center justify-center gap-16 max-w-screen-xl mx-auto">
-        <div className="flex-1 max-w-lg">
-          <h1 className="text-6xl font-bold mb-8 text-center md:text-left leading-tight">
+
+      {/* Hero Section - Full Screen and Centered */}
+      <main className="min-h-screen px-6 flex flex-col md:flex-row items-center justify-between gap-16 max-w-screen-xl mx-auto w-full">
+        {/* Left Side - Hero Text */}
+        <div className="flex-1 max-w-lg w-full min-w-[300px] md:min-w-[400px]">
+          <h1 className="text-4xl md:text-6xl xl:text-7xl font-bold mb-8 text-center md:text-left leading-tight">
             Smart Stock Recommendations
           </h1>
-          <p className="text-xl text-gray-600 mb-10 text-center md:text-left">
+          <p className="text-lg md:text-xl text-gray-600 mb-10 text-center md:text-left">
             Track your investments and get personalized stock recommendations based on your portfolio and market trends.
           </p>
-          <div className="flex gap-6 justify-center md:justify-start">
+          <div className="flex flex-wrap gap-4 justify-center md:justify-start">
             <Button text="Get Started" variant="outline" onClick={handleGetStartedClick} />
             <Button text="View Features" variant="outline" onClick={handleViewFeaturesClick} />
-            <Button text =" View Demo >"  onClick={handleDemoClick} />
+            <Button text="View Demo >" onClick={handleDemoClick} />
           </div>
         </div>
 
-        <div className="flex-1 flex justify-center items-center w-full">
+        {/* Right Side - Market Overview Card */}
+        <div className="flex-1 flex justify-center items-center w-full max-w-xl">
           <Card title="Market Overview">
             <div className="space-y-5">
               {marketData.map((stock) => (
@@ -67,9 +71,15 @@ const Home = () => {
           </Card>
         </div>
       </main>
-      <section ref={keyFeaturesRef} className="pt-24 pb-32 px-12 bg-gray-50">
+
+      {/* Key Features Section - Scrolls into view */}
+      <section
+        ref={keyFeaturesRef}
+        className="pt-24 pb-32 px-4 sm:px-8 md:px-12 xl:px-32 bg-gray-50"
+      >
         <KeyFeatures />
       </section>
+
       <Footer />
     </div>
   );

@@ -23,14 +23,20 @@ const Signup = () => {
           <div className="flex justify-center">
             <button 
               className="w-full px-4 py-3 bg-black text-white rounded"
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/')} // Redirect to homepage (or dashboard)
             >
               Create Account
             </button>
           </div>
 
           <p className="text-center text-gray-600 mt-6">
-            Already have an account? <a href="#" className="text-black font-medium"  onClick={() => navigate('/login')}>Login</a>
+            Already have an account? 
+            <button
+              onClick={() => navigate('/login')} // Navigate to login page
+              className="text-black font-medium"
+            >
+              Login
+            </button>
           </p>
         </div>
       </div>
