@@ -30,6 +30,5 @@ const features = [
       </div>
     </section>
   );
-};
 
 export default KeyFeatures;
