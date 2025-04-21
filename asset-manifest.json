@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/StockRecommendFront/static/css/main.718ee89d.css",
+    "main.js": "/StockRecommendFront/static/js/main.e8b0a571.js",
+    "static/media/images.jpg": "/StockRecommendFront/static/media/images.ed9b3f602270389ebd55.jpg",
+    "index.html": "/StockRecommendFront/index.html",
+    "main.718ee89d.css.map": "/StockRecommendFront/static/css/main.718ee89d.css.map",
+    "main.e8b0a571.js.map": "/StockRecommendFront/static/js/main.e8b0a571.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.718ee89d.css",
+    "static/js/main.e8b0a571.js"
+  ]
+}
