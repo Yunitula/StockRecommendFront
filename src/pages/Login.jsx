@@ -20,20 +20,33 @@ const Login = () => {
 
           <div className="flex justify-between mb-6">
             <p className="text-black font-medium text-sm"> </p>
-            <a href="#" className="text-gray-500 font-medium text-sm">Forgot password?</a>
+            {/* Replace <a href="#"> with a <button> for actions */}
+            <button
+              onClick={() => console.log('Redirecting to forgot password')}
+              className="text-gray-500 font-medium text-sm"
+            >
+              Forgot password?
+            </button>
           </div>
 
           <div className="flex justify-center">
             <button 
               className="w-full px-4 py-3 bg-black text-white rounded"
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/')} // You can adjust this to the proper login route
             >
               Login
             </button>
           </div>
 
           <p className="text-center text-gray-600 mt-6">
-            Don't have an account? <a href="#" className="text-black font-medium" onClick={() => navigate('/signup')}>Sign up</a>
+            Don't have an account? 
+            {/* Use <button> for navigation instead of <a href="#"> */}
+            <button
+              onClick={() => navigate('/signup')} // Navigate to the signup page
+              className="text-black font-medium"
+            >
+              Sign up
+            </button>
           </p>
         </div>
       </div>
