@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const features = [
   {
@@ -17,8 +16,6 @@ const features = [
 ];
 
 const KeyFeatures = () => {
-  const navigate = useNavigate();
-
   return (
     <section className="text-center py-16">
       <h2 className="text-4xl font-bold mb-4">Key Features</h2>
