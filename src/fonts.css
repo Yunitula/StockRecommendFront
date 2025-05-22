@@ -1,0 +1,36 @@
+/* Font declarations */
+@font-face {
+  font-family: 'Polysans Bu';
+  src: url('/fonts/PolysansBulky.woff2') format('woff2'),
+       url('/fonts/PolysansBulky.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Polysans slim';
+  src: url('/fonts/PolysansSlim.woff2') format('woff2'),
+       url('/fonts/PolysansSlim.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tobias';
+  src: url('/fonts/Tobias-Regular.woff2') format('woff2'),
+       url('/fonts/Tobias-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tobias';
+  src: url('/fonts/Tobias-Bold.woff2') format('woff2'),
+       url('/fonts/Tobias-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+} 

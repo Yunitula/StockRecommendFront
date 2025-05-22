@@ -9,8 +9,7 @@ const Dashboard = () => {
     <div className="flex flex-col min-h-screen">
       <DashboardNavbar />
 
-      {/* Main content section */}
-      <div className="flex-1 overflow-y-auto pt-20 pb-24">
+      <div className="flex-1 overflow-y-auto pt-6 pb-24">
         <div className="max-w-screen-xl mx-auto p-6">
           <h1 className="text-3xl font-bold mb-4">Welcome back, User!</h1>
           <p className="text-gray-600 mb-8">Your personalized stock dashboard overview</p>
@@ -27,7 +26,6 @@ const Dashboard = () => {
             ))}
           </div>
 
-          {/* Demo Mode section */}
           <div className="border rounded p-4 mb-6 bg-gray-50 flex items-center justify-between">
             <div>
               <h2 className="font-semibold text-lg mb-1">Demo Mode</h2>
@@ -43,10 +41,8 @@ const Dashboard = () => {
             </button>
           </div>
 
-          {/* Active tab content */}
           {activeTab === 'Overview' && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {/* Overview Cards */}
               <div className="border rounded p-5 bg-white shadow-sm">
                 <h3 className="text-sm mb-1 text-gray-500">Total Value</h3>
                 <p className="text-2xl font-bold">$16,098.07</p>

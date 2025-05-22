@@ -11,3 +11,104 @@ html {
   scroll-behavior: smooth;
 }
 
+.tt-marquee-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  padding: 1rem 0;
+  background: #f9f9f9;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.tt-marquee-group {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100vw;
+}
+
+.tt-marquee-track {
+  display: flex;
+  width: fit-content;
+}
+
+.features-card {
+  transition: all 100ms ease-in;
+}
+
+.features-card:hover {
+  margin: -15px;
+}
+
+.tt-marquee--textgroup {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 30s linear infinite;
+}
+
+.tt-marquee--textgroup.reverse {
+  animation-name: marquee-reverse;
+}
+
+.tt-marquee--textgroup.large {
+  animation-duration: 40s;
+}
+
+.tt-marquee--textgroup.large.reverse {
+  animation-duration: 45s;
+}
+
+.marquee-text {
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.marquee-text.small {
+  font-size: 1rem;
+  line-height: 1.1;
+}
+
+.marquee-text.large {
+  font-size: 3.5rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.is-outline-red {
+  color: transparent;
+  -webkit-text-stroke: 1px #b91c1c;
+}
+
+.is-outline-green {
+  color: transparent;
+  -webkit-text-stroke: 1px #15803d;
+}
+
+.is-outline-gray {
+  color: transparent;
+  -webkit-text-stroke: 1px #6b7280;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
