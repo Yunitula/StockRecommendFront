@@ -32,59 +32,22 @@ const Navbar = forwardRef((props, ref) => {
   };
 
   return (
-    <div
-      className="tt-navbar w-nav"
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 1000,
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        backgroundColor: 'transparent',
-        padding: '1rem',
-      }}
-    >
-      <header
-        className="tt-navbar-strip"
-        style={{
-          width: '100%',
-          maxWidth: '80rem',
-          padding: '1rem 2rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          backgroundColor: 'white',
-          boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-          borderRadius: '1.5rem',
-        }}
-      >
-        <div className="flex items-center gap-3 cursor-pointer" onClick={handleLogoClick} style={{ flex: isSearchActive ? '0 0 auto' : '1' }}>
-          <img
-            src={logo}
-            alt="NepseDai Logo"
-            className="w-10 h-10 rounded-full object-cover"
-          />
+    <div className="w-full sticky top-0 z-[1000] flex justify-center bg-transparent p-4">
+      <header className="w-full max-w-[80rem] p-4 sm:p-6 flex items-center justify-between bg-white shadow rounded-3xl">
+        <div
+          className={`flex items-center gap-3 cursor-pointer transition-all duration-300 ${isSearchActive ? 'flex-none' : 'flex-1'}`}
+          onClick={handleLogoClick}
+        >
+          <img src={logo} alt="NepseDai Logo" className="w-10 h-10 rounded-full object-cover" />
           <span
-            className={`font-bold transition-all duration-200
-              ${isSearchActive ? 'hidden sm:inline' : 'inline'}
-            `}
-            style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 600,
-              letterSpacing: '-0.5px',
-            }}
+            className={`font-bold text-lg transition-all duration-200 ${isSearchActive ? 'hidden sm:inline' : 'inline'}`}
           >
             NepseDai
           </span>
         </div>
 
-        <div
-          className={`flex items-center transition-all duration-300 ease-in-out ${isSearchActive ? 'flex-1 mx-6' : ''}`}
-        >
-          <div
-            className={`relative flex items-center ${isSearchActive ? 'w-full' : 'w-auto'}`}
-          >
+        <div className={`flex items-center transition-all duration-300 ${isSearchActive ? 'flex-1 mx-6' : ''}`}>
+          <div className={`relative flex items-center ${isSearchActive ? 'w-full' : 'w-auto'}`}>
             {!isSearchActive ? (
               <button
                 onClick={toggleSearch}
@@ -127,28 +90,20 @@ const Navbar = forwardRef((props, ref) => {
         </div>
 
         <div className="flex items-center gap-4 ml-4">
-          <button
-            className="block sm:hidden text-2xl p-2"
-            onClick={() => navigate('/login')}
-            aria-label="Log in"
-          >
+          <button className="sm:hidden text-2xl p-2" onClick={() => navigate('/login')}>
             <FaUserCircle />
           </button>
           <button
-            className="hidden sm:block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+            className="hidden sm:block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg"
             onClick={() => navigate('/login')}
           >
             Log in
           </button>
-          <button
-            className="block sm:hidden text-2xl p-2"
-            onClick={() => navigate('/signup')}
-            aria-label="Sign up"
-          >
+          <button className="sm:hidden text-2xl p-2" onClick={() => navigate('/signup')}>
             <FaUserPlus />
           </button>
           <button
-            className="hidden sm:block px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-900 transition-colors"
+            className="hidden sm:block px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-900"
             onClick={() => navigate('/signup')}
           >
             Sign up
