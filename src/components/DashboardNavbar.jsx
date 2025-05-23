@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logo from '../assets/images.jpg';
 import { FaSearch, FaUserCircle, FaBell } from 'react-icons/fa';
+import logo from '../assets/images.jpg';
 
 const DashboardNavbar = () => {
   const navigate = useNavigate();
@@ -34,36 +34,21 @@ const DashboardNavbar = () => {
   };
 
   return (
-    <div className="tt-navbar w-nav" style={{
-      position: 'sticky',
-      top: 0,
-      zIndex: 1000,
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      backgroundColor: 'transparent',
-      padding: '1rem'
-    }}>
-      <header className="tt-navbar-strip" style={{
-        width: '100%',
-        maxWidth: '80rem',
-        padding: '1rem 2rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        backgroundColor: 'white',
-        boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-        borderRadius: '1.5rem'
-      }}>
+    <div className="w-full sticky top-0 z-[1000] flex justify-center bg-transparent p-4">
+      <header className="w-full max-w-[80rem] p-4 sm:p-6 flex items-center justify-between bg-white shadow rounded-3xl">
         <div
-          className="text-2xl font-bold flex items-center gap-3 cursor-pointer"
+          className={`flex items-center gap-3 cursor-pointer transition-all duration-300 ${isSearchActive ? 'flex-none' : 'flex-1'}`}
           onClick={handleLogoClick}
-          style={{ flex: isSearchActive ? '0 0 auto' : '1' }}
         >
           <img src={logo} alt="NepseDai Logo" className="w-10 h-10 rounded-full object-cover" />
-          {!isSearchActive && <span style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: '600' }}>NepseDai</span>}
+          {!isSearchActive && (
+            <span className="text-lg font-semibold">
+              NepseDai
+            </span>
+          )}
         </div>
-        <div className={`flex items-center transition-all duration-300 ease-in-out ${isSearchActive ? 'flex-1 mx-6' : ''}`}>
+
+        <div className={`flex items-center transition-all duration-300 ${isSearchActive ? 'flex-1 mx-6' : ''}`}>
           <div className={`relative flex items-center ${isSearchActive ? 'w-full' : 'w-auto'}`}>
             {!isSearchActive ? (
               <button
@@ -103,15 +88,15 @@ const DashboardNavbar = () => {
             )}
           </div>
         </div>
-        <div className="flex gap-4 items-center relative ml-4">
+
+        <div className="flex items-center gap-4 ml-4 relative">
           <div className="relative">
-            <FaBell 
-              className="text-black text-2xl cursor-pointer" 
-              onClick={() => {
-                setShowNotifications(!showNotifications);
-                setShowUserMenu(false);
-              }}
-            />
+            <button className="text-2xl p-2" onClick={() => {
+              setShowNotifications(!showNotifications);
+              setShowUserMenu(false);
+            }}>
+              <FaBell />
+            </button>
             {showNotifications && (
               <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow p-3 text-sm z-50">
                 <p>User Notification</p>
@@ -120,21 +105,18 @@ const DashboardNavbar = () => {
           </div>
 
           <div className="relative">
-            <FaUserCircle 
-              className="text-black text-2xl cursor-pointer"
-              onClick={() => {
-                setShowUserMenu(!showUserMenu);
-                setShowNotifications(false);
-              }}
-            />
+            <button className="text-2xl p-2" onClick={() => {
+              setShowUserMenu(!showUserMenu);
+              setShowNotifications(false);
+            }}>
+              <FaUserCircle />
+            </button>
             {showUserMenu && (
               <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow p-3 text-sm z-50">
-                <button
-                  onClick={() => navigate('/signup')}
-                  className="w-full px-4 py-2 bg-black text-white text-sm rounded"
-                >
-                  Sign Up for Access
-                </button>
+                <p>Profile</p>
+                <p className="mt-2 cursor-pointer hover:text-blue-500" onClick={() => navigate('/logout')}>
+                  Logout
+                </p>
               </div>
             )}
           </div>
