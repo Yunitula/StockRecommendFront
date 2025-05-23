@@ -1,162 +1,199 @@
-import React, { useState, forwardRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { FaSearch, FaUserCircle, FaUserPlus } from 'react-icons/fa';
-import logo from '../assets/images.jpg';
+import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import KeyFeatures from "../components/KeyFeatures";
+import Button from "../components/Button";
+import Card from "../components/Card";
+import Footer from "../components/Footer";
+import MarqueeSection from "../components/Marquee";
+import { Typewriter } from "react-simple-typewriter";
+import Custom3DCarousel from '../components/Carousel';
 
-const Navbar = forwardRef((props, ref) => {
+const Home = () => {
+  const keyFeaturesRef = useRef(null);
   const navigate = useNavigate();
-  const location = useLocation();
-  const [isSearchActive, setIsSearchActive] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
-  const handleLogoClick = () => {
-    if (location.pathname === '/') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      navigate('/');
+  const handleViewFeaturesClick = () => {
+    const element = keyFeaturesRef.current;
+    if (element) {
+      const offset = 80;
+      const elementRect = element.getBoundingClientRect();
+      const absoluteElementTop = window.pageYOffset + elementRect.top - offset;
+
+      window.scrollTo({
+        top: absoluteElementTop,
+        behavior: "smooth"
+      });
     }
   };
 
-  const toggleSearch = () => {
-    setIsSearchActive(!isSearchActive);
-    if (!isSearchActive) {
-      setTimeout(() => {
-        document.getElementById('nav-search-input')?.focus();
-      }, 100);
-    }
+  const handleGetStartedClick = () => {
+    navigate("/signup");
   };
 
-  const handleSearchCancel = () => {
-    setIsSearchActive(false);
-    setSearchQuery('');
+  const handleDemoClick = () => {
+    navigate("/dashboard");
   };
+
+  const marketData = [
+    { symbol: "AAPL", name: "Apple Inc.", price: 182.63, change: "-2.4%" },
+    { symbol: "MSFT", name: "Microsoft Corp.", price: 415.32, change: "+1.8%" },
+    { symbol: "AMZN", name: "Amazon.com Inc.", price: 178.75, change: "+3.2%" },
+    { symbol: "NVDA", name: "NVIDIA Corp.", price: 924.67, change: "-4.1%" },
+    { symbol: "GOOGL", name: "Alphabet Inc.", price: 165.93, change: "+1.5%" },
+  ];
 
   return (
-    <div
-      className="tt-navbar w-nav"
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 1000,
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        backgroundColor: 'transparent',
-        padding: '1rem',
-      }}
-    >
-      <header
-        className="tt-navbar-strip"
-        style={{
-          width: '100%',
-          maxWidth: '80rem',
-          padding: '1rem 2rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          backgroundColor: 'white',
-          boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-          borderRadius: '1.5rem',
-        }}
-      >
-        <div className="flex items-center gap-3 cursor-pointer" onClick={handleLogoClick} style={{ flex: isSearchActive ? '0 0 auto' : '1' }}>
-          <img
-            src={logo}
-            alt="NepseDai Logo"
-            className="w-10 h-10 rounded-full object-cover"
-          />
-          <span
-            className={`font-bold transition-all duration-200
-              ${isSearchActive ? 'hidden sm:inline' : 'inline'}
-            `}
-            style={{
-              fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 600,
-              letterSpacing: '-0.5px',
-            }}
-          >
-            NepseDai
-          </span>
-        </div>
+    <div className="min-h-screen flex flex-col">
+      <Navbar/>
+      <main className="flex-1 px-4 sm:px-6 lg:px-8 pt-20 md:pt-2 lg:pt-2 pb-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 lg:gap-10 max-w-7xl mx-auto">
+          <div className="flex-1 w-full md:max-w-xl flex flex-col justify-center">
+            <h1
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 text-center md:text-left leading-tight"
+              style={{
+                fontFamily: '"Playfair Display", serif',
+                fontWeight: 700,
+                color: "rgb(13, 13, 13)",
+                letterSpacing: '-0.02em'
+              }}>
+              Smart Stock Recommendations
+            </h1>
 
-        <div
-          className={`flex items-center transition-all duration-300 ease-in-out ${isSearchActive ? 'flex-1 mx-6' : ''}`}
-        >
-          <div
-            className={`relative flex items-center ${isSearchActive ? 'w-full' : 'w-auto'}`}
-          >
-            {!isSearchActive ? (
-              <button
-                onClick={toggleSearch}
-                className="p-2 hover:bg-gray-100 rounded-full"
-                aria-label="Open search"
-              >
-                <FaSearch className="text-xl" />
-              </button>
-            ) : (
-              <div className="w-full flex items-center bg-gray-100 rounded-full overflow-hidden">
-                <FaSearch className="text-gray-500 ml-4" />
-                <input
-                  id="nav-search-input"
-                  type="text"
-                  placeholder="Search stocks..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full px-4 py-2 bg-transparent border-none outline-none"
+            <div className="h-20 sm:h-24 md:h-28 mb-2 flex items-center">
+              <p
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 text-center md:text-left leading-snug"
+                style={{
+                  fontFamily: '"Inter", sans-serif',
+                  fontWeight: 300,
+                  color: "rgb(71, 84, 103)",
+                }}>
+                <Typewriter
+                  words={[
+                    "Personalized stock picks based on your portfolio and market trends.",
+                    "Smart insights to help you invest with confidence.",
+                    "AI-powered recommendations tailored to your financial goals.",
+                    "Stay ahead with data-driven stock suggestions.",
+                    "Optimize your investments with intelligent market analysis.",
+                  ]}
+                  loop={true}
+                  cursor
+                  cursorStyle="|"
+                  typeSpeed={60}
+                  deleteSpeed={40}
+                  delaySpeed={2000}
                 />
-                {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="p-2 hover:bg-gray-200 rounded-full mr-1"
-                    aria-label="Clear search"
+              </p>
+            </div>
+
+            <p
+              className="text-sm sm:text-base md:text-lg text-gray-600 mb-4 text-center md:text-left"
+              style={{
+                fontFamily: '"DM Sans", sans-serif',
+                fontWeight: 400,
+                color: "rgb(71, 84, 103)",
+                lineHeight: '1.6',
+              }}>
+              Track your investments and get personalized stock recommendations
+              based on your portfolio and market trends.
+            </p>
+
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-2">
+              <Button
+                text="Get Started"
+                variant="outline"
+                onClick={handleGetStartedClick}
+              />
+              <Button
+                text="View Features"
+                variant="outline"
+                onClick={handleViewFeaturesClick}
+              />
+              <Button text="View Demo >" onClick={handleDemoClick} />
+            </div>
+          </div>
+
+          <div className="w-full md:flex-1 md:max-w-xl mt-8 md:mt-0">
+            <Card title="Market Overview">
+              <div className="space-y-3 sm:space-y-4">
+                {marketData.map((stock) => (
+                  <div
+                    key={stock.symbol}
+                    className="flex justify-between items-center p-2 sm:p-3 hover:bg-gray-50 rounded-lg transition-colors"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M18 6L6 18M6 6l12 12" />
-                    </svg>
-                  </button>
-                )}
-                <button
-                  onClick={handleSearchCancel}
-                  className="px-4 py-2 hover:bg-gray-200 text-sm"
-                >
-                  Cancel
-                </button>
+                    <div>
+                      <p className="text-sm sm:text-base font-medium"
+                        style={{
+                          fontFamily: '"DM Sans", sans-serif',
+                          fontWeight: 500,
+                          color: "rgb(13, 13, 13)",
+                        }}>
+                        {stock.symbol}
+                      </p>
+                      <p className="text-xs sm:text-sm text-gray-500"
+                        style={{
+                          fontFamily: '"DM Sans", sans-serif',
+                          fontWeight: 400,
+                        }}>
+                        {stock.name}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm sm:text-base font-medium"
+                        style={{
+                          fontFamily: '"DM Sans", sans-serif',
+                          fontWeight: 500,
+                        }}>
+                        ${stock.price}
+                      </p>
+                      <p className={`text-xs sm:text-sm ${stock.change.startsWith('+') ? 'text-green-500' : 'text-red-500'}`}>
+                        {stock.change}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            )}
+            </Card>
           </div>
         </div>
+      </main>
 
-        <div className="flex items-center gap-4 ml-4">
-          <button
-            className="block sm:hidden text-2xl p-2"
-            onClick={() => navigate('/login')}
-            aria-label="Log in"
-          >
-            <FaUserCircle />
-          </button>
-          <button
-            className="hidden sm:block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
-            onClick={() => navigate('/login')}
-          >
-            Log in
-          </button>
-          <button
-            className="block sm:hidden text-2xl p-2"
-            onClick={() => navigate('/signup')}
-            aria-label="Sign up"
-          >
-            <FaUserPlus />
-          </button>
-          <button
-            className="hidden sm:block px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-900 transition-colors"
-            onClick={() => navigate('/signup')}
-          >
-            Sign up
-          </button>
+      <section className="w-full bg-gray-50">
+        <MarqueeSection marketData={marketData} />
+      </section>
+
+      <section
+        ref={keyFeaturesRef}
+        id="features"
+        className="w-full bg-gray-50 py-10 sm:py-14 md:py-16"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <KeyFeatures />
         </div>
-      </header>
+      </section>
+
+      <section className="w-full bg-white py-10 md:py-14 lg:py-16 overflow-x-hidden">
+        <div className="w-full px-0 mx-auto">
+          <h2
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center"
+            style={{
+              fontFamily: '"Playfair Display", serif',
+              fontWeight: 700,
+              color: "#18181b",
+              letterSpacing: '-0.01em',
+            }}
+          >
+            Explore Latest News
+          </h2>
+          <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] px-6">
+            <Custom3DCarousel />
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
-});
+};
 
-export default Navbar;
+export default Home;
