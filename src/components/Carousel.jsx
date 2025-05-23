@@ -13,6 +13,7 @@ export default function Custom3DCarousel() {
   const lastTime = useRef(0);
   const momentumAnim = useRef(null);
   const autoplayAnim = useRef(null);
+  const animationFrameDrag = useRef(null);
 
   const [cardWidth, setCardWidth] = useState(360);
   const cardGap = 16;
@@ -56,28 +57,41 @@ export default function Custom3DCarousel() {
 
   const handleDragStart = (e) => {
     isDragging.current = true;
+    e.preventDefault(); // Prevent default browser drag/select
     startX.current = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
     lastX.current = currentX.current;
     lastTime.current = performance.now();
     velocity.current = 0;
     cancelAnimationFrame(momentumAnim.current);
     cancelAnimationFrame(autoplayAnim.current);
+    if (animationFrameDrag.current) cancelAnimationFrame(animationFrameDrag.current);
     gsap.killTweensOf(wrapperRef.current);
   };
 
   const handleDragMove = (e) => {
     if (!isDragging.current) return;
+    e.preventDefault(); // Prevent text selection, image drag, etc.
+
     const x = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
     const deltaX = x - startX.current;
     const now = performance.now();
     const deltaTime = now - lastTime.current;
 
     const singleSetWidth = (cardWidth + cardGap) * carouselData.length;
-    currentX.current = wrapPosition(lastX.current + deltaX, singleSetWidth);
-    gsap.set(wrapperRef.current, { x: currentX.current });
+    const newPos = wrapPosition(lastX.current + deltaX, singleSetWidth);
+    currentX.current = newPos;
+
+    // Use requestAnimationFrame to update position smoothly
+    if (!animationFrameDrag.current) {
+      animationFrameDrag.current = requestAnimationFrame(() => {
+        gsap.set(wrapperRef.current, { x: currentX.current });
+        animationFrameDrag.current = null;
+      });
+    }
 
     if (deltaTime > 0) {
-      velocity.current = (deltaX) / deltaTime * 16;
+      const newVelocity = (deltaX) / deltaTime * 16;
+      velocity.current = velocity.current * 0.8 + newVelocity * 0.2; // Smooth velocity
     }
     lastTime.current = now;
   };
@@ -148,7 +162,11 @@ export default function Custom3DCarousel() {
 
   useEffect(() => {
     startAutoplay();
-    return () => cancelAnimationFrame(autoplayAnim.current);
+    return () => {
+      cancelAnimationFrame(autoplayAnim.current);
+      cancelAnimationFrame(momentumAnim.current);
+      if (animationFrameDrag.current) cancelAnimationFrame(animationFrameDrag.current);
+    };
   }, [cardWidth]);
 
   return (
